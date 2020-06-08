@@ -2,34 +2,18 @@
   <section id="top-hero" class="hero is-fullheight">
     <div class="hero-body">
       <div class="container has-text-centered">
-        <h1 class="title">Klis System Lab Finder</h1>
+        <h1 class="title">あああ</h1>
         <h2 class="subtitle">気になるタグを選んで診断にしよう</h2>
         <div class="categolies">
-          <button class="button is-medium" @click="categoryClicked">
-            機械学習
-          </button>
-          <button class="button is-medium" @click="categoryClicked">
-            図書館・教育
-          </button>
-          <button class="button is-medium" @click="categoryClicked">
-            検索
-          </button>
-          <button class="button is-medium" @click="categoryClicked">
-            情報行動
-          </button>
-          <button class="button is-medium" @click="categoryClicked">
-            図書館・教育
-          </button>
-          <button class="button is-medium" @click="categoryClicked">
-            検索
-          </button>
-          <button class="button is-medium" @click="categoryClicked">
-            情報行動
-          </button>
+          <button class="button is-medium" @click="categoryClicked">機械学習</button>
+          <button class="button is-medium" @click="categoryClicked">図書館・教育</button>
+          <button class="button is-medium" @click="categoryClicked">検索</button>
+          <button class="button is-medium" @click="categoryClicked">情報行動</button>
+          <button class="button is-medium" @click="categoryClicked">図書館・教育</button>
+          <button class="button is-medium" @click="categoryClicked">検索</button>
+          <button class="button is-medium" @click="categoryClicked">情報行動</button>
         </div>
-        <button class="submit button is-primary is-large">
-          診断する
-        </button>
+        <button class="submit button is-primary is-large">診断する</button>
       </div>
     </div>
   </section>
