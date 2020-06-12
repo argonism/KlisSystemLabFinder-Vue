@@ -27,7 +27,7 @@
             情報行動
           </button>
         </div>
-        <button class="submit button is-primary is-large">
+        <button class="submit button is-primary is-large"  v-on:click="clickGrassPane">
           診断する
         </button>
       </div>
@@ -37,11 +37,26 @@
 
 <script>
 export default {
+  data() {
+    return {
+      detail: false,
+      show: true,
+    };
+  },
+
   methods: {
     categoryClicked(event) {
       event.target.classList.toggle("clicked");
-      console.log("sss");
-    }
+
+      if (document.getElementsByClassName("clicked").length >= 3) {
+        console.log("aaa")
+        self.detail = !self.detail
+      }
+    },
+
+    clickGrassPane(event) {
+      self.detail = !self.detail
+    },
   }
 };
 </script>
@@ -98,5 +113,12 @@ export default {
     color: $green;
     border-color: $green;
   }
+}
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .5s;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
 }
 </style>
