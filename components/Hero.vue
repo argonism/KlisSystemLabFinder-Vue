@@ -30,6 +30,9 @@
         <button class="submit button is-primary is-large"  v-on:click="clickGrassPane">
           診断する
         </button>
+        <button v-if="over3" class="submit button is-primary is-large"  v-on:click="clickGrassPane">
+          詳細な分類を選ぶ
+        </button>
       </div>
     </div>
   </section>
@@ -41,6 +44,7 @@ export default {
     return {
       detail: false,
       show: true,
+      over3: false,
     };
   },
 
@@ -51,6 +55,7 @@ export default {
       if (document.getElementsByClassName("clicked").length >= 3) {
         console.log("aaa")
         self.detail = !self.detail
+        this.over3 = true
       }
     },
 
