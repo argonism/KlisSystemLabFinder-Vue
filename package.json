@@ -7,7 +7,7 @@
   "scripts": {
     "dev": "nuxt",
     "build": "API_URL=/ nuxt build",
-    "start": "nuxt --hostname 160.16.234.27 --port 80",
+    "start": "nuxt --hostname 160.16.234.27 --port 3000",
     "generate": "nuxt generate"
   },
   "dependencies": {
@@ -23,5 +23,7 @@
     "sweet-scroll": "^4.0.0",
     "vueinview": "^1.0.7"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "cross-env": "^7.0.2"
+  }
 }
