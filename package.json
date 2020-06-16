@@ -6,8 +6,8 @@
   "private": true,
   "scripts": {
     "dev": "nuxt",
-    "build": "nuxt build",
-    "start": "nuxt start",
+    "build": "API_URL=/ nuxt build",
+    "start": "nuxt --hostname 160.16.234.27 --port 80",
     "generate": "nuxt generate"
   },
   "dependencies": {
