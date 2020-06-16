@@ -1,5 +1,5 @@
 
-export default {
+const config = {
   // mode: 'spa',
   /*
   ** Headers of the page
@@ -69,11 +69,19 @@ export default {
 
   proxy: {
     '/api': {
-      target: 'http://160.16.234.27:8080/',
+      target: 'http://localhost:8080/',
       pathRewrite: {
         '^/api' : '/'
         }
       }
   }
   
+};
+
+if (process.env.NODE_ENV === 'production') {
+  config.generate = {
+    dir: '/var/www/html'
+  };
 }
+
+export default config;
