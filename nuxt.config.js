@@ -40,6 +40,8 @@ export default {
   modules: [
     // Doc: https://github.com/nuxt-community/modules/tree/master/packages/bulma
     '@nuxtjs/bulma',
+    '@nuxtjs/axios',
+    '@nuxtjs/proxy',
   ],
   /*
   ** Build configuration
@@ -57,5 +59,19 @@ export default {
     */
     extend (config, ctx) {
     }
+  },
+
+  axios: {
+    proxy: true
+  },
+
+  proxy: {
+    '/api': {
+      target: 'http://160.16.234.27:8080/',
+      pathRewrite: {
+        '^/api' : '/'
+        }
+      }
   }
+  
 }

@@ -8,10 +8,16 @@
     "dev": "nuxt",
     "build": "nuxt build",
     "start": "nuxt start",
-    "generate": "nuxt generate"
+    "generate": "nuxt generate",
+    "webserver": "http-server ./dist -o -p 8888"
   },
   "dependencies": {
     "@nuxtjs/bulma": "^1.2.1",
+<<<<<<< Updated upstream
+=======
+    "animate.css": "^4.1.0",
+    "http-server": "^0.12.3",
+>>>>>>> Stashed changes
     "install": "^0.13.0",
     "node-sass": "^4.14.1",
     "npm": "^6.14.5",
