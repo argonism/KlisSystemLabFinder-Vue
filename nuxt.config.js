@@ -69,7 +69,7 @@ const config = {
 
   proxy: {
     '/api': {
-      target: 'http://localhost:8080/',
+      target: 'http://160.16.234.27:8080/',
       pathRewrite: {
         '^/api' : '/'
         }
