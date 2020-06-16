@@ -12,6 +12,9 @@
             診断する
           </button>
         </div>
+        <!-- <button v-if="over3" class="submit button is-primary is-large"  v-on:click="clickGrassPane">
+          詳細な分類を選ぶ
+        </button> -->
       </div>
     </div>
   </section>
@@ -25,8 +28,8 @@ export default {
     return {
       detail: false,
       show: true,
-      tags:[
-      ]
+      tags:[],
+      over3: false,
     };
   },
 
@@ -36,6 +39,7 @@ export default {
 
       if (document.getElementsByClassName("clicked").length >= 3) {
         self.detail = !self.detail
+        this.over3 = true
       }
     },
 
@@ -94,7 +98,7 @@ export default {
   .categolies {
     margin: auto;
     margin-top: 100px;
-    max-width: 650px;
+    max-width: 800px;
 
     button {
       color: #fff;
