@@ -1,6 +1,6 @@
 
 export default {
-  mode: 'spa',
+  // mode: 'spa',
   /*
   ** Headers of the page
   */
@@ -68,8 +68,9 @@ export default {
 
   proxy: {
     '/api/': {
-      target: 'http://localhost:8080',
+      target: 'http://localhost:8080/',
       pathRewrite: {'^/api/': ''},
     }
-  }
+  },
+  
 }
