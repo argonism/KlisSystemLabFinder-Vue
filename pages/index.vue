@@ -1,30 +1,49 @@
 <template>
   <div class="wrapper">
-    <Hero />
-    <div class="card">
-      <div class="card-content">
-        <p class="title">
-          “There are two hard things in computer science: cache invalidation,
-          naming things, and off-by-one errors.”
-        </p>
-        <p class="subtitle">
-          Jeff Atwood
-        </p>
-      </div>
-    </div>
+    <link href="https://cdn.jsdelivr.net/npm/animate.css@3.5.1" rel="stylesheet" type="text/css">
+    <Hero @submitted="HeroSubmitted" />
+    <Questions v-if="top_submitted" @answerd="Answerd" />
+    <Result v-if="answerd" />
   </div>
 </template>
 
 <script>
 import Hero from "~/components/Hero.vue";
+import Questions from "~/components/Questions.vue";
+import Result from "~/components/Result.vue";
 
 export default {
   components: {
-    Hero
+    Hero,
+    Questions,
+    Result
   },
 
-  methods: {}
+  data () {
+    return {
+      top_submitted: false,
+      answerd: false,
+    }
+  },
+
+  methods: {
+    HeroSubmitted() {
+      if (this.top_submitted) return;
+      this.top_submitted = true;
+    },
+
+    Answerd() {
+      if (this.answerd) return;
+      this.answerd = true;
+    },
+
+    
+  }
 };
 </script>
 
-<style lang="scss"></style>
+<style lang="scss" scoped>
+body {
+  scroll-behavior: smooth;
+}
+</style>
