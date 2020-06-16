@@ -73,7 +73,7 @@
 
         <!-- <div class="box">
         </div> -->
-        <button class="redo button is-danger" v-inview:animate="'fadeInUp'" @click="reset">もう一度診断する</button>
+        <!-- <button class="redo button is-danger" v-inview:animate="'fadeInUp'" @click="reset">もう一度診断する</button> -->
       </div>
     </div>
   </section>
