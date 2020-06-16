@@ -12,7 +12,8 @@ export default {
       { hid: 'description', name: 'description', content: process.env.npm_package_description || '' }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      { type: 'stylesheet', href: 'https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css' },
     ]
   },
   /*
@@ -22,12 +23,13 @@ export default {
   /*
   ** Global CSS
   */
-  css: [
-  ],
+  css: [],
+
   /*
   ** Plugins to load before mounting the App
   */
   plugins: [
+    { src: "~/plugins/in-view"},
   ],
   /*
   ** Nuxt.js dev-modules
@@ -40,6 +42,7 @@ export default {
   modules: [
     // Doc: https://github.com/nuxt-community/modules/tree/master/packages/bulma
     '@nuxtjs/bulma',
+    '@nuxtjs/axios',
   ],
   /*
   ** Build configuration
@@ -56,6 +59,17 @@ export default {
     ** You can extend webpack config here
     */
     extend (config, ctx) {
+    }
+  },
+
+  axios: {
+    proxy: true
+  },
+
+  proxy: {
+    '/api/': {
+      target: 'http://localhost:8080',
+      pathRewrite: {'^/api/': ''},
     }
   }
 }

@@ -3,47 +3,32 @@
     <div class="hero-body">
       <div class="container has-text-centered">
         <h1 class="title">Klis System Lab Finder</h1>
-        <h2 class="subtitle">気になるタグを選んで診断にしよう</h2>
+        <h2 class="subtitle">気になるタグを選んで診断しよう</h2>
         <div class="categolies">
-          <button class="button is-medium" @click="categoryClicked">
-            機械学習
-          </button>
-          <button class="button is-medium" @click="categoryClicked">
-            図書館・教育
-          </button>
-          <button class="button is-medium" @click="categoryClicked">
-            検索
-          </button>
-          <button class="button is-medium" @click="categoryClicked">
-            情報行動
-          </button>
-          <button class="button is-medium" @click="categoryClicked">
-            図書館・教育
-          </button>
-          <button class="button is-medium" @click="categoryClicked">
-            検索
-          </button>
-          <button class="button is-medium" @click="categoryClicked">
-            情報行動
+          <button v-for="tag in tags" v-bind:key="tag.id" v-bind:value="tag.id" class="button is-medium" @click="categoryClicked">{{tag.category}}</button>
+        </div>
+        <div>
+          <button class="submit button is-primary is-large"  v-on:click="clickSubmitButton">
+            診断する
           </button>
         </div>
-        <button class="submit button is-primary is-large"  v-on:click="clickGrassPane">
-          診断する
-        </button>
-        <button v-if="over3" class="submit button is-primary is-large"  v-on:click="clickGrassPane">
+        <!-- <button v-if="over3" class="submit button is-primary is-large"  v-on:click="clickGrassPane">
           詳細な分類を選ぶ
-        </button>
+        </button> -->
       </div>
     </div>
   </section>
 </template>
 
 <script>
+import { mapMutations } from 'vuex'
+
 export default {
   data() {
     return {
       detail: false,
       show: true,
+      tags:[],
       over3: false,
     };
   },
@@ -53,20 +38,37 @@ export default {
       event.target.classList.toggle("clicked");
 
       if (document.getElementsByClassName("clicked").length >= 3) {
-        console.log("aaa")
         self.detail = !self.detail
         this.over3 = true
       }
     },
 
-    clickGrassPane(event) {
-      self.detail = !self.detail
+    clickSubmitButton(event) {
+      let tags = []
+      let tag_collection = document.getElementsByClassName("clicked")
+      if (tag_collection.length === 0) return;
+      for( var i = 0; i < tag_collection.length; i++  ){
+          tags.push(tag_collection[i].value)
+        }
+
+      this.$store.dispatch('tagsUploader', tags)
+      this.$emit('submitted')
     },
-  }
+
+    async GetTags() {
+      const items = await this.$axios.$get('/api/get/tags');
+      this.tags = await items;
+    }
+
+  },
+
+  created() {
+    this.GetTags();
+  },
 };
 </script>
 
-<style scoped lang="scss">
+<style lang="scss" scoped >
 @import "../node_modules/bulma/sass/utilities/initial-variables.sass";
 
 #top-hero {
@@ -74,49 +76,49 @@ export default {
     url("../static/images/top.jpg");
   background-size: cover;
   background-position: center;
-}
 
-.hero-body {
-  .title {
-    color: #fff;
-    font-size: 3em;
-    border-bottom: 1px solid #fff;
-    padding-bottom: 10px;
-    display: inline-block;
+  .hero-body {
+    .title {
+      color: #fff;
+      font-size: 3em;
+      border-bottom: 1px solid #fff;
+      padding-bottom: 10px;
+      display: inline-block;
+    }
+
+    .subtitle {
+      color: #ccc;
+    }
+
+    .submit {
+      margin-top: 50px;
+    }
   }
 
-  .subtitle {
-    color: #ccc;
-  }
+  .categolies {
+    margin: auto;
+    margin-top: 100px;
+    max-width: 800px;
 
-  .submit {
-    margin-top: 50px;
-  }
-}
+    button {
+      color: #fff;
+      background-color: transparent;
+      margin: 5px 7px;
+    }
+    .button:focus {
+      outline: none;
+      border-color: inherit;
+    }
+    .button:active {
+      outline: none;
+      color: #fff;
+      border-color: $green;
+    }
 
-.categolies {
-  margin: auto;
-  margin-top: 100px;
-  max-width: 650px;
-
-  button {
-    color: #fff;
-    background-color: transparent;
-    margin: 5px 7px;
-  }
-  .button:focus {
-    outline: none;
-    border-color: inherit;
-  }
-  .button:active {
-    outline: none;
-    color: #fff;
-    border-color: $green;
-  }
-
-  .clicked {
-    color: $green;
-    border-color: $green;
+    .clicked {
+      color: $green;
+      border-color: $green;
+    }
   }
 }
 
