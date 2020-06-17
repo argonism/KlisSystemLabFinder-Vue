@@ -45,6 +45,9 @@ export default {
     OnRadioClicked(e) {
       this.answers.push(e.target.value)
       this.current_pos += 1;
+      for (const element of document.getElementsByName('answer')) {
+        element.checked = false;
+      }
       if (this.current_pos == this.questions.length) {
         this.$store.dispatch('AnswersUploader', this.answers);
         this.$emit('answerd');
@@ -103,6 +106,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import "../node_modules/bulma/sass/utilities/initial-variables.sass";
+
 .card .title {
   margin-bottom: 2em;
 }
@@ -123,6 +128,27 @@ label {
   opacity: 0;
 }
 
+
+label {
+  border: 1px solid #ddd;
+  padding: 10px 20px;
+
+  input[type=radio] {
+    display: none;
+  }
+
+  &:hover {
+    border: 1px solid $green;
+    transition: all 0.5s;
+  }
+
+  &:active {
+    border: 1px solid $green;
+    background-color: $green;
+    color: #fff;
+    transition: all 0.3s;
+  }
+}
 
 .list-enter-active, .list-leave-active {
   transition: all 1s;

@@ -29,7 +29,7 @@ const config = {
   ** Plugins to load before mounting the App
   */
   plugins: [
-    { src: "~/plugins/in-view"},
+    { src: "~/plugins/in-view", ssr: false},
   ],
   /*
   ** Nuxt.js dev-modules
