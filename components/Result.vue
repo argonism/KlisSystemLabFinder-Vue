@@ -19,7 +19,7 @@
               {{labs[0].name.split(" ")[0]}}　研
             </p>
             <div class="lab-explanation">
-              <h2>研究室概要</h2>
+              <h2>研究室紹介</h2>
               <p class="lab-subtitle">
                 {{labs[0].options[0].outline}}
               </p>
@@ -44,7 +44,7 @@
               {{labs[1].name.split(" ")[0]}}　研
             </p>
             <div class="lab-explanation">
-              <h2>研究室概要</h2>
+              <h2>研究室紹介</h2>
               <p class="lab-subtitle">
                 {{labs[1].options[0].outline}}
               </p>
@@ -69,7 +69,7 @@
               {{labs[2].name.split(" ")[0]}}　研
             </p>
             <div class="lab-explanation">
-              <h2>研究室概要</h2>
+              <h2>研究室紹介</h2>
               <p class="lab-subtitle">
                 {{labs[2].options[0].outline}}
               </p>
@@ -87,7 +87,7 @@
               {{lab.name.split(" ")[0]}}　研
             </p>
             <div class="lab-explanation">
-              <h2>研究室概要</h2>
+              <h2>研究室紹介</h2>
               <p class="lab-subtitle">
                 {{lab.options[0].outline}}
               </p>
